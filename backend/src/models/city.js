@@ -16,16 +16,9 @@ const citySchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      trim: true,
-      set: (name) => {
-        // example: "New York" -> "NY1", "New York City" -> "NYC2"
-        const code = name
-          .toUpperCase()
-          .replace(/ /g, "")
-          .replace(/[^\w\s]/gi, "");
-        return `${code}${City.countDocuments({ name }) + 1}`;
-      },
+      trim: true
     },
+
   },
   {
     timestamps: true,
