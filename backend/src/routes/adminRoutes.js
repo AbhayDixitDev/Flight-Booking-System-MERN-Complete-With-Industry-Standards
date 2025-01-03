@@ -1,8 +1,9 @@
 import express from 'express';
-import {registerAirline, registerCity} from '../controllers/adminController.js';
+import {registerAirline, registerCity, registerFlight} from '../controllers/adminController.js';
 
 const router = express.Router();
 router.post('/registerAirline', registerAirline);
 router.post('/registerCity', registerCity);
+router.post('/registerFlight', registerFlight);
 
 export default router;
