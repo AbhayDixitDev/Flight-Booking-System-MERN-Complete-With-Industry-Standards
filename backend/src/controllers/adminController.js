@@ -3,7 +3,7 @@ import { ApiResponse } from '../utils/ApiResponse.js';
 import { ApiError } from '../utils/ApiError.js';
 import Airline from '../models/airline.js';
 import City from '../models/city.js';
-import {Flight} from '../models/flight.js';
+import { Flight } from '../models/flight.js';
 
 const registerAirline = asyncHandler(async (req, res, next) => {
     try {
@@ -32,27 +32,12 @@ const registerCity = asyncHandler(async (req, res, next) => {
 
 const registerFlight = asyncHandler(async (req, res, next) => {
     try {
-        const {airline,flightNumber,departureCity,arrivalCity,departureTime,arrivalTime,duration,
+        const { airline, flightNumber, departureCity, arrivalCity, departureTime, arrivalTime, duration,
             economyPrice,
             businessPrice,
             economySeats,
             businessSeats
         } = req.body;
-
-        // {
-        //     "airline": "67756fecec0deb00f8391499",
-        //             "flightNumber": "AA123",
-        //             "departureCity": "67757444ed2d66514838ab25",
-        //             "arrivalCity": '67781ae57705378acc909d88',
-        //             "departureTime": new Date(),
-        //             "arrivalTime": new Date(Date.now() + 3600000),
-        //             "duration": 1,
-        //             "economyPrice": 15000,
-        //             "businessPrice": 20000,
-        //             "economySeats": 100,
-        //             "businessSeats": 50
-        // }
-        
 
         const flight = await Flight.create({
             airline,
