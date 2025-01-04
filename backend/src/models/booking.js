@@ -73,4 +73,4 @@ bookingSchema.plugin(mongooseAggregatePaginate);
 
 const Booking = mongoose.model("Booking", bookingSchema);
 
-export default Booking;
+export { Booking};

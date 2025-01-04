@@ -3,7 +3,7 @@ import { ApiResponse } from '../utils/ApiResponse.js';
 import { ApiError } from '../utils/ApiError.js';
 import Airline from '../models/airline.js';
 import City from '../models/city.js';
-import Flight from '../models/flight.js';
+import {Flight} from '../models/flight.js';
 
 const registerAirline = asyncHandler(async (req, res, next) => {
     try {
