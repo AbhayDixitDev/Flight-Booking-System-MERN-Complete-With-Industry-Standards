@@ -2,7 +2,7 @@ import React from 'react'
 import {Nav, Navbar} from 'react-bootstrap'
 import {FaSearch, FaBook, FaHistory} from 'react-icons/fa';
 
-const Sidebar = () => {
+const UserSidebar = () => {
     return (
         <Navbar className="sidebar" variant="dark" style={{backgroundColor: "#333", flexDirection: "column", padding: "10px", width: "20vw", height: "80vh"}}>
             <Nav className="flex-column " style ={{width: "100%", height: "100%", alignItems: "center",  gap: "10px"}}>
@@ -14,4 +14,4 @@ const Sidebar = () => {
     );
 };
 
-export default Sidebar;
+export default UserSidebar;

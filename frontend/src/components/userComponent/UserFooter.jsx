@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { GithubOutlined, MailOutlined } from '@ant-design/icons';
 
-const Footer = () => {
+const UserFooter = () => {
   return (
     <footer style={{ width: '100vw', height: '15vh', position: 'fixed', bottom: 0 }} className="footer py-3">
       <Row style={{ alignItems: 'center' }}>
@@ -22,4 +22,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default UserFooter;

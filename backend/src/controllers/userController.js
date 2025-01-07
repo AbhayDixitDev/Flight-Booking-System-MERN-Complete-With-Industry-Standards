@@ -44,6 +44,24 @@ const loginUser = asyncHandler(async (req, res, next) => {
     }
 });
 
+const loginAdmin = asyncHandler(async (req, res, next) => {
+    try {
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
+        if (!user) return next(new ApiError(400, "Incorrect email or password"));
+        const isPasswordCorrect = await user.isPasswordCorrect(password);
+        if (!isPasswordCorrect) return next(new ApiError(400, "Incorrect email or password"));
+        if (!user.isAdmin) return next(new ApiError(400, "Please login with a admin account"));
+        const accessToken = user.generateAccessToken();
+        const refreshToken = user.generateRefreshToken();
+        res.cookie("accessToken", accessToken, { httpOnly: true, secure: true, sameSite: "none" });
+        res.cookie("refreshToken", refreshToken, { httpOnly: true, secure: true, sameSite: "none" });
+        return res.status(200).json(new ApiResponse(200, user, "User logged in successfully"));
+    } catch (error) {
+        return next(new ApiError(400, error.message, [error]));
+    }
+});
+
 const logoutUser = asyncHandler(async (req, res, next) => {
     try {
         res.clearCookie("accessToken");
@@ -87,4 +105,4 @@ const bookFlight = asyncHandler(async (req, res, next) => {
 });
 
 
-export { registerUser, loginUser, logoutUser, userProfile, bookFlight };
+export { registerUser, loginUser, logoutUser, userProfile, bookFlight, loginAdmin };
