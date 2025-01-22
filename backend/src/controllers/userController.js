@@ -48,6 +48,8 @@ const loginAdmin = asyncHandler(async (req, res, next) => {
     try {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
+        // console.log(user);
+        
         if (!user) return next(new ApiError(400, "Incorrect email or password"));
         const isPasswordCorrect = await user.isPasswordCorrect(password);
         if (!isPasswordCorrect) return next(new ApiError(400, "Incorrect email or password"));
