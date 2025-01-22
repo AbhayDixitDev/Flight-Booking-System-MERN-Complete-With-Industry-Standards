@@ -5,12 +5,26 @@ import { User } from '../models/user.js';
 import { Booking } from '../models/booking.js';
 import { Flight } from '../models/flight.js';
 
+import {uploadOnCloudinary} from "../utils/Cloudinary.js"
+
 
 const registerUser = asyncHandler(async (req, res, next) => {
     try {
 
-        const { username, email, password, fullName, avatar, passportNumber } = req.body;
+        let { username, email, password, fullName, avatar, passportNumber } = req.body;
+        // console.log(req.body);
+        // console.log(req.file);
+        
+        
+        avatar = await uploadOnCloudinary(req.file.path);
+        // console.log(avatar);
+        
+        if (!avatar) return next(new ApiError(400, "Avatar is required"));
 
+        avatar = avatar.secure_url
+        
+        
+        
         const existingUser = await User.findOne({ email });
         if (existingUser) return next(new ApiError(400, "User already exists"));
         const user = await User.create({

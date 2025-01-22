@@ -1,21 +1,21 @@
-import Header from "./UserHeader";
-import Sidebar from "./UserSidebar";
-import Footer from "./UserFooter";
-import {Outlet} from "react-router-dom";
+import UserHeader from "./UserHeader"
+import UserSidebar from "./UserSidebar"
+import UserFooter from "./UserFooter"
+import {Outlet} from "react-router-dom"
+import UserRightSidebar from "./UserRightSidebar"
 
-const UserLayout = () => {
-    return (
-        <div className="d-flex flex-column h-100">
-           <Header />
-            <div className="d-flex flex-row flex-grow-1">
-                <Sidebar />
-                <div className="flex-grow-1">
-                    <Outlet />
-                </div>
-            </div>
-            <Footer />
+const UserLayout=()=>{
+    return(
+        <>
+        <div style={{overflow:"hidden"}}>
+        <UserHeader/>
+        <UserSidebar/>
+        <Outlet/>
+        <UserRightSidebar/>
+        <UserFooter/>
         </div>
-    );
-};
+        </>
+    )
+}
 
-export default UserLayout;
+export default UserLayout
