@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
+    "@tailwindcss/cli": "^4.0.0",
     "antd": "^5.22.7",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
@@ -20,7 +21,8 @@
     "react-icons": "^5.4.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.1",
-    "reactstrap": "^9.2.3"
+    "reactstrap": "^9.2.3",
+    "tailwindcss": "^4.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
